@@ -1,13 +1,23 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Use the PORT from the environment or default to 3000
 
 app.use(cors());
 app.use(express.json());
 
-let todos = []; // In-memory storage for simplicity
+// Serve static files from the 'client' directory
+app.use(express.static(path.join(__dirname, 'client')));
+
+// Define a route for the root path
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'index.html')); // Ensure index.html is correctly placed
+});
+
+// In-memory storage for simplicity
+let todos = [];
 
 app.get('/todos', (req, res) => {
     res.json(todos);
