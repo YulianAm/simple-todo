@@ -1,0 +1,17 @@
+/* client/style.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+#app {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input {
+    width: 70%;
+}
+
+button {
+    width: 25%;
+}
